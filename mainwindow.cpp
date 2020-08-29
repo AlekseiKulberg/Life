@@ -12,9 +12,14 @@ MainWindow::MainWindow(QWidget *parent)
 {
 
     ui->setupUi(this);
-
+    setWindowTitle("LIFE");
     MainTimer = new QTimer();
     scene = new QGraphicsScene();
+
+     ui->MainGraphicsView->setScene(scene);
+     scene->setBackgroundBrush(Qt::black);
+
+
 
 
 
@@ -57,9 +62,9 @@ void MainWindow::DrawCell(int x1, int y1, int width, int height)
 {
 
 
-    ui->MainGraphicsView->setScene(scene);
+
     scene->setSceneRect(0,0, ui->MainGraphicsView->width(),ui->MainGraphicsView->height());
-    scene->addRect(QRect(x1* resolution,y1 * resolution,width - 1,height - 1), QPen(Qt::red,0.8), QBrush(Qt::green));
+    scene->addRect(QRect(x1 * resolution,y1 * resolution,width - 2,height - 2), QPen(Qt::red), QBrush(Qt::red));
 
 }
 

@@ -16,8 +16,8 @@ MainWindow::MainWindow(QWidget *parent)
     MainTimer = new QTimer();
     scene = new QGraphicsScene();
 
-     ui->MainGraphicsView->setScene(scene);
-     scene->setBackgroundBrush(Qt::black);
+    ui->MainGraphicsView->setScene(scene);
+    scene->setBackgroundBrush(Qt::black);
 
 
 
@@ -36,7 +36,11 @@ MainWindow::~MainWindow()
 void MainWindow::StartGame()
 {
 
-
+    if(ui->ResolutionLineEdit->text() == NULL)
+    {
+        resolution = 5;
+        ui->ResolutionLineEdit->setText("5");
+    }
     resolution = ui->ResolutionLineEdit->text().toInt();
     cols = ui->MainGraphicsView->width()/resolution;
     rows = ui->MainGraphicsView->height()/resolution;
@@ -82,7 +86,7 @@ void MainWindow::slotTimerAlarm()
         }
     }
     gameEngine->NextGeneration(false);
-    QThread::msleep(100);
+    //QThread::msleep(100);
 
 }
 
